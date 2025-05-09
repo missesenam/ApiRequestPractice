@@ -3,11 +3,14 @@ import { Link } from "react-router-dom";
 
 const App = () => {
   const exercises = [
-    { id: 1, name: "Random User Generator", path: "/random-user" },
-    { id: 2, name: "Country Information App", path: "/country-info" },
-    { id: 3, name: "News Headlines Fetcher", path: "/news" },
-    { id: 4, name: "Weather Checker", path: "/weather" },
-    { id: 5, name: "Movie Search App", path: "/movie-search" },
+    { name: "usEeffect", path: "/counter" },
+    { name: "axios", path: "/axios" },
+    { name: "fetch", path: "/fetch" },
+    { name: "Random User Generator", path: "/random-user" },
+    { name: "Country Information App", path: "/country-info" },
+    { name: "News Headlines Fetcher", path: "/news" },
+    { name: "Weather Checker", path: "/weather" },
+    { name: "Movie Search App", path: "/movie-search" },
   ];
 
   return (
@@ -16,9 +19,9 @@ const App = () => {
         API Exercises
       </h1>
       <div className="grid gap-4 grid-cols-1 md:grid-cols-2 lg:grid-cols-3">
-        {exercises.map((exercise) => (
+        {exercises.map((exercise, index) => (
           <div
-            key={exercise.id}
+            key={index}
             className="p-4 bg-white rounded-xl shadow-lg transition-transform transform hover:scale-105"
           >
             <Link

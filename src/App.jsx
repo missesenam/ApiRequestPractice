@@ -13,6 +13,9 @@ import MovieSearchApp from "./components/MovieSearchApp";
 import NewsHeadlinesFetcher from "./components/NewsHeadlinesFetcher";
 import RandomUserGenerator from "./components/RandomUserGenerator";
 import WeatherChecker from "./components/WeatherChecker";
+import Axios from "./components/Axios";
+import Fetch from "./components/Fetch";
+import Counter from "./components/Counter";
 
 const App = () => {
   const myRoute = createBrowserRouter(
@@ -24,6 +27,9 @@ const App = () => {
         <Route path="/news" element={<NewsHeadlinesFetcher />} />
         <Route path="/random-user" element={<RandomUserGenerator />} />
         <Route path="/weather" element={<WeatherChecker />} />
+        <Route path="/axios" element={<Axios />} />
+        <Route path="/fetch" element={<Fetch />} />
+        <Route path="/counter" element={<Counter />} />
       </Route>
     )
   );

@@ -3,7 +3,6 @@ import { Link } from "react-router-dom";
 
 const App = () => {
   const exercises = [
-    { name: "usEeffect", path: "/counter" },
     { name: "axios", path: "/axios" },
     { name: "fetch", path: "/fetch" },
     { name: "Random User Generator", path: "/random-user" },

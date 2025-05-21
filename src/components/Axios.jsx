@@ -15,7 +15,7 @@ const Axios = () => {
       const todo = await axios.get(
         "https://jsonplaceholder.typicode.com/users"
       );
-      console.log(todo);
+      console.log(todo.data);
       setUsers(todo.data);
       setError(null);
     } catch (error) {

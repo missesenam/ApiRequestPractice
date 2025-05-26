@@ -1,5 +1,6 @@
 import axios from "axios";
 import React, { useEffect, useState } from "react";
+const apiKey = import.meta.env.VITE_API_KEY;
 
 // Goal: Display top news headlines from a news API.
 // b78e097f2c1f43c8bf31c006d2965f0e;
@@ -19,7 +20,7 @@ const NewsHeadlinesFetcher = () => {
   const retrieveHeaders = async () => {
     try {
       const response = await axios.get(
-        "https://newsapi.org/v2/everything?q=tesla&from=2025-04-22&sortBy=publishedAt&apiKey=b78e097f2c1f43c8bf31c006d2965f0e"
+        `https://newsapi.org/v2/everything?q=tesla&from=2025-04-22&sortBy=publishedAt&apiKey=${apiKey}`
       );
       console.log(response);
     } catch (err) {

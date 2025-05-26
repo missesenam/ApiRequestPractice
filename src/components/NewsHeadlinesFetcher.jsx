@@ -1,5 +1,6 @@
 import axios from "axios";
 import React, { useEffect, useState } from "react";
+import NewsFilter from "./NewsFilter";
 const apiKey = import.meta.env.VITE_API_KEY;
 
 // Goal: Display top news headlines from a news API.
@@ -37,7 +38,7 @@ const NewsHeadlinesFetcher = () => {
       <h1 className="text-3xl font-bold text-gray-800 mb-8 text-center">
         Top News Headlines
       </h1>
-
+      <NewsFilter />
       <div className="grid gap-6 grid-cols-1 sm:grid-cols-2 lg:grid-cols-3">
         {/* News Card 1 */}
         <div className="bg-white p-6 rounded-lg shadow hover:shadow-lg transition">

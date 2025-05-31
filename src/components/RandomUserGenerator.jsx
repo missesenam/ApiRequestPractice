@@ -1,52 +1,32 @@
 import axios from "axios";
 import React, { useEffect } from "react";
-import { useState } from "react";
+import { useDispatch, useSelector } from "react-redux";
+import { retriveRandom, resetBeforeFetch } from "../slices/RandomUserSlice";
 
 const RandomUserGenerator = () => {
-  const [randomUsers, setRandomUser] = useState([]);
-  const [isLoading, setIsLoading] = useState(true);
-  const [error, setError] = useState(null);
-
-  const retriveRandom = async () => {
-    try {
-      setIsLoading(true);
-      await new Promise((resolve) => {
-        setTimeout(resolve, 1000);
-      });
-      const response = await axios.get("https://randomuser.me/api/");
-      console.log(response.data);
-      const apiuserArray = response.data.results;
-      setRandomUser(apiuserArray);
-      setError(null);
-    } catch (error) {
-      console.error(error);
-      setError("error fetching data");
-    } finally {
-      setIsLoading(false);
-    }
-  };
-
-  const handleUserGenerator = () => {
-    setIsLoading(true);
-    setError(null);
-    setRandomUser([]);
-    retriveRandom();
-  };
-
+  const { randomUsers, isLoading, error } = useSelector(
+    (state) => state.randomusers
+  );
+  const dispatch = useDispatch();
   useEffect(() => {
-    retriveRandom();
-  }, []);
+    dispatch(retriveRandom());
+  }, [dispatch]);
+
+  // const handleUserGenerator = () => {
+  //   setIsLoading(true);
+  //   setError(null);
+  //   setRandomUser([]);
+  //   retriveRandom();
+  // };
+  const handleGenerateUser = () => {
+    dispatch(resetBeforeFetch());
+    dispatch(retriveRandom(Date.now()));
+  };
   return (
     <div className="flex flex-col items-center p-4 bg-gray-100 rounded-xl shadow-lg">
       <h1 className="text-2xl font-bold text-blue-600 mb-4">
         Random User Generator
       </h1>
-      {/* errr */}
-      {error && (
-        <p className="text-red-700">
-          error while fecthing data, check your origin
-        </p>
-      )}
       {/* spinner */}
       {isLoading && (
         <button
@@ -77,6 +57,12 @@ const RandomUserGenerator = () => {
           Processing…
         </button>
       )}
+      {/* errr */}
+      {error && (
+        <p className="text-red-700">
+          error while fecthing data, check your origin
+        </p>
+      )}
 
       {/* User Information */}
 
@@ -95,7 +81,7 @@ const RandomUserGenerator = () => {
       {/* Button to Fetch New User */}
       <button
         className="mt-4 px-4 py-2 bg-blue-500 text-white rounded-lg hover:bg-blue-600"
-        onClick={handleUserGenerator}
+        onClick={handleGenerateUser}
       >
         Get New User
       </button>

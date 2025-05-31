@@ -1,10 +1,10 @@
 import { configureStore } from "@reduxjs/toolkit";
-import userReducer from "../slices/UserSlice";
 import axiosReducer from "../slices/AxiosSlice";
+import randomuserReducer from "../slices/RandomUserSlice";
 
 export const store = configureStore({
   reducer: {
     theusers: axiosReducer,
-    users: userReducer,
+    randomusers: randomuserReducer,
   },
 });
